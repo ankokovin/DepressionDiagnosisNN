@@ -1,0 +1,7 @@
+meter::-webkit-meter-even-less-good-value{background:red;}
+meter::-webkit-meter-suboptimum-value{background:orange;}
+meter::-webkit-meter-optimum-value {background: green;}
+
+meter{
+    width: 50em;
+}

@@ -1,0 +1,1472 @@
+Trying:
+    from nn_handler.field import QFieldNumeric, FieldCalc
+Expecting nothing
+ok
+Trying:
+    f1 = QFieldNumeric('вес', True, 'Ваш вес', 0.0, 1.0)
+Expecting nothing
+ok
+Trying:
+    f2 = QFieldNumeric('рост', True, 'Ваш рост',0.0, 1.0)
+Expecting nothing
+ok
+Trying:
+    f3 = FieldCalc('BMI',False,"df['BMI']=df['вес']/df['рост']**2", 0.0 , 1.0)
+Expecting nothing
+ok
+Trying:
+    from nn_handler.field import Field
+     Field.clear_field_list()
+Expecting nothing
+**********************************************************************
+File "README.md", line 135, in README.md
+Failed example:
+    from nn_handler.field import Field
+     Field.clear_field_list()
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[4]>", line 1
+        from nn_handler.field import Field
+                                         ^
+    SyntaxError: multiple statements found while compiling a single statement
+Trying:
+    import os
+     os.rename(os.getcwd()+'/models', 'models-saved')
+     os.mkdir(os.getcwd()+'/models')
+Expecting nothing
+**********************************************************************
+File "README.md", line 137, in README.md
+Failed example:
+    import os
+     os.rename(os.getcwd()+'/models', 'models-saved')
+     os.mkdir(os.getcwd()+'/models')
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[5]>", line 1
+        import os
+                ^
+    SyntaxError: multiple statements found while compiling a single statement
+Trying:
+    from nn_handler.field import FieldType
+Expecting nothing
+ok
+Trying:
+    int(FieldType.choice)
+Expecting:
+    1
+ok
+Trying:
+    int(FieldType.numeric)
+Expecting:
+    2
+ok
+Trying:
+    int(FieldType.calc)
+Expecting:
+    3
+ok
+Trying:
+    from nn_handler.field import Field
+Expecting nothing
+ok
+Trying:
+    Field()
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 3 required positional arguments: 'name', 'field_type', and 'ignore'
+ok
+Trying:
+    Field(1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 2 required positional arguments: 'field_type' and 'ignore'
+ok
+Trying:
+    Field(1,2)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 1 required positional argument: 'ignore'
+ok
+Trying:
+    Field(1, 1, 1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field name must be string
+ok
+Trying:
+    Field('test',1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field type must be from enum
+ok
+Trying:
+    Field('test',FieldType.choice,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: ignore must be bool
+ok
+Trying:
+    f = Field('test',FieldType.choice,True)
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.choice
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == True
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    f = Field('test',FieldType.numeric,True)
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.numeric
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == True
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    f = Field('test',FieldType.calc,False)
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.calc
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == False
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    Field('test', FieldType.calc, False)
+     assert len(Field.df) == 1
+     Field('test', FieldType.calc, False)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    nn_handler.field.FieldNameExists: (<class 'nn_handler.field.FieldNameExists'>, FieldNameExists(...), "Поле с именем 'test' уже существует.")
+**********************************************************************
+File "README.md", line 245, in README.md
+Failed example:
+    Field('test', FieldType.calc, False)
+     assert len(Field.df) == 1
+     Field('test', FieldType.calc, False)
+Expected:
+    Traceback (most recent call last):
+    ...
+    nn_handler.field.FieldNameExists: (<class 'nn_handler.field.FieldNameExists'>, FieldNameExists(...), "Поле с именем 'test' уже существует.")
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[35]>", line 1
+        Field('test', FieldType.calc, False)
+                                           ^
+    SyntaxError: multiple statements found while compiling a single statement
+Trying:
+    assert len(Field.df) == 1
+     Field.clear_field_list()
+Expecting nothing
+**********************************************************************
+File "README.md", line 251, in README.md
+Failed example:
+    assert len(Field.df) == 1
+     Field.clear_field_list()
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[36]>", line 1
+        assert len(Field.df) == 1
+                                ^
+    SyntaxError: multiple statements found while compiling a single statement
+Trying:
+    from nn_handler.field import QField
+Expecting nothing
+ok
+Trying:
+    QField()
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 4 required positional arguments: 'name', 'field_type', 'ignore', and 'question'
+ok
+Trying:
+    QField(1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 3 required positional arguments: 'field_type', 'ignore', and 'question'
+ok
+Trying:
+    QField(1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 2 required positional arguments: 'ignore' and 'question'
+ok
+Trying:
+    QField(1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 1 required positional argument: 'question'
+ok
+Trying:
+    QField(1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field name must be string
+ok
+Trying:
+    QField('test',1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field type must be from enum
+ok
+Trying:
+    QField('test',FieldType.choice,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: ignore must be bool
+ok
+Trying:
+    QField('test',FieldType.choice,False,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field question must be string
+ok
+Trying:
+    f = QField('test',FieldType.choice,True,'test_question')
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.choice
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == True
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    f = QField('test',FieldType.numeric,True,'test_question')
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.numeric
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == True
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    f = QField('test',FieldType.calc,False,'test_question')
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.calc
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == False
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    from nn_handler.field import QFieldChoice
+Expecting nothing
+ok
+Trying:
+    QFieldChoice()
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 5 required positional arguments: 'name', 'ignore', 'question', 'separate', and 'answers'
+ok
+Trying:
+    QFieldChoice(1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 4 required positional arguments: 'ignore', 'question', 'separate', and 'answers'
+ok
+Trying:
+    QFieldChoice(1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 3 required positional arguments: 'question', 'separate', and 'answers'
+ok
+Trying:
+    QFieldChoice(1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 2 required positional arguments: 'separate' and 'answers'
+ok
+Trying:
+    QFieldChoice(1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 1 required positional argument: 'answers'
+ok
+Trying:
+    QFieldChoice(1,1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field name must be string
+ok
+Trying:
+    QFieldChoice('test',1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: ignore must be bool
+ok
+Trying:
+    QFieldChoice('test',False,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field question must be string
+ok
+Trying:
+    QFieldChoice('test',False,'test_qestion',1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: separate must be bool
+ok
+Trying:
+    QFieldChoice('test',False,'test_question',False,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: choice field answers on non-separate field must be dict
+ok
+Trying:
+    QFieldChoice('test',False,'test_qauestion',False,['one','two'])
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: choice field answers on non-separate field must be dict
+ok
+Trying:
+    QFieldChoice('test',False,'test_question',False,{1:2,'test':2})
+Expecting:
+    Traceback (most recent call last): 
+    ...
+    ValueError: all answer keys must be str
+ok
+Trying:
+    QFieldChoice('test',False,'test_question',False,{'test':1,'test2':'qq'})
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: all answer values must be int of float
+ok
+Trying:
+    QFieldChoice('test',False,'test_question',True,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: choice filed answers on separate field must be list
+ok
+Trying:
+    QFieldChoice('test',False,'test_question',True,{'test':1})
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: choice filed answers on separate field must be list
+ok
+Trying:
+    QFieldChoice('test',False,'test_question',True,['hi',1])
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: all answer items must be str
+ok
+Trying:
+    f=QFieldChoice('test',False,'test_question',True,['hi','all'])
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.choice
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == False
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert f.separate == True
+Expecting nothing
+ok
+Trying:
+    assert len(f.answers) == 2
+Expecting nothing
+ok
+Trying:
+    assert f.answers[0] == 'hi'
+Expecting nothing
+ok
+Trying:
+    assert f.answers[1] == 'all'
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    f=QFieldChoice('test',True,'test_question',True,['hi'])
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.choice
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == True
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert f.separate == True
+Expecting nothing
+ok
+Trying:
+    assert len(f.answers) == 1
+Expecting nothing
+ok
+Trying:
+    assert f.answers[0] == 'hi'
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    f=QFieldChoice('test',False,'test_question',False,{'hi':1})
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.choice
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == False
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert f.separate == False
+Expecting nothing
+ok
+Trying:
+    assert len(f.answers) == 1
+Expecting nothing
+ok
+Trying:
+    assert f.answers['hi'] == 1
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    f=QFieldChoice('test',True,'test_question',False,{'hi':1, 'all':0.5})
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.choice
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == True
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert f.separate == False
+Expecting nothing
+ok
+Trying:
+    assert len(f.answers) == 2
+Expecting nothing
+ok
+Trying:
+    assert f.answers['hi'] == 1
+Expecting nothing
+ok
+Trying:
+    assert f.answers['all'] == 0.5
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    from nn_handler.field import QFieldNumeric
+Expecting nothing
+ok
+Trying:
+    QFieldNumeric()
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 5 required positional arguments: 'name', 'ignore', 'question', 'mean', and 'std'
+ok
+Trying:
+    QFieldNumeric(1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 4 required positional arguments: 'ignore', 'question', 'mean', and 'std'
+ok
+Trying:
+    QFieldNumeric(1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 3 required positional arguments: 'question', 'mean', and 'std'
+ok
+Trying:
+    QFieldNumeric(1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 2 required positional arguments: 'mean' and 'std'
+ok
+Trying:
+    QFieldNumeric(1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 1 required positional argument: 'std'
+ok
+Trying:
+    QFieldNumeric(1,1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field name must be string
+ok
+Trying:
+    QFieldNumeric('test',1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: ignore must be bool
+ok
+Trying:
+    QFieldNumeric('test',False,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field question must be string
+ok
+Trying:
+    QFieldNumeric('test',False,'test_question',1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: numeric field mean must be float
+ok
+Trying:
+    QFieldNumeric('test',False,'test_question',1.0,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: numeric field std must be float
+ok
+Trying:
+    QFieldNumeric('test',False,'test_question',1.0,-1.0)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: deviation cannot be negative
+ok
+Trying:
+    f=QFieldNumeric('test',False,'test_question',1.0,2.0)
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.numeric
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == False
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert f.mean == 1.0
+Expecting nothing
+ok
+Trying:
+    assert f.std == 2.0
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    f=QFieldNumeric('test',True,'test_question',1.0,2.0)
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.field_type == FieldType.numeric
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == True
+Expecting nothing
+ok
+Trying:
+    assert f.question == 'test_question'
+Expecting nothing
+ok
+Trying:
+    assert f.mean == 1.0
+Expecting nothing
+ok
+Trying:
+    assert f.std == 2.0
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    from nn_handler.field import FieldCalc
+Expecting nothing
+ok
+Trying:
+    FieldCalc()
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 5 required positional arguments: 'name', 'ignore', 'code', 'mean', and 'std'
+ok
+Trying:
+    FieldCalc(1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 4 required positional arguments: 'ignore', 'code', 'mean', and 'std'
+ok
+Trying:
+    FieldCalc(1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 3 required positional arguments: 'code', 'mean', and 'std'
+ok
+Trying:
+    FieldCalc(1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 2 required positional arguments: 'mean' and 'std'
+ok
+Trying:
+    FieldCalc(1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 1 required positional argument: 'std'
+ok
+Trying:
+    FieldCalc(1,1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: field name must be string
+ok
+Trying:
+    FieldCalc('test',1,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: ignore must be bool
+ok
+Trying:
+    FieldCalc('test',False,1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: code in calc field is expected to be str
+ok
+Trying:
+    FieldCalc('test',False,'df["test"]',1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: numeric field mean must be float
+ok
+Trying:
+    FieldCalc('test',False,'df["test"]',1.0,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: numeric field std must be float
+ok
+Trying:
+    FieldCalc('test',False,'df["test"]',1.0,-1.0)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: deviation cannot be negative
+ok
+Trying:
+    f = FieldCalc('test',False,'df["test"]',1.0,2.0)
+Expecting nothing
+ok
+Trying:
+    assert f.name == 'test'
+Expecting nothing
+ok
+Trying:
+    assert f.ignore == False
+Expecting nothing
+ok
+Trying:
+    assert f.code == 'df["test"]'
+Expecting nothing
+ok
+Trying:
+    assert f.mean == 1.0
+Expecting nothing
+ok
+Trying:
+    assert f.std == 2.0
+Expecting nothing
+ok
+Trying:
+    assert 'test' in Field.df
+Expecting nothing
+ok
+Trying:
+    Field.clear_field_list()
+Expecting nothing
+ok
+Trying:
+    FieldCalc('test',False,'def t',1.0,1.0)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    nn_handler.field.CalcCodeParseError: invalid syntax
+ok
+Trying:
+    FieldCalc('test',False,'2+2',1.0,1.0)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    nn_handler.field.CalcCodeParseError: В коде отсутствует ссылка на df["test"]
+ok
+Trying:
+    FieldCalc('test',False,'df["test"]=df["illegal_field"]',1.0,1.0)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    nn_handler.field.CalcCodeParseError: В коде используется ссылка на неизвестное поле с именем illegal_field
+ok
+Trying:
+    import os
+     os.environ['VERBOUSE'] = 'False'
+     from nn_handler.net import Net
+Expecting nothing
+**********************************************************************
+File "README.md", line 746, in README.md
+Failed example:
+    import os
+     os.environ['VERBOUSE'] = 'False'
+     from nn_handler.net import Net
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[179]>", line 1
+        import os
+                ^
+    SyntaxError: multiple statements found while compiling a single statement
+Trying:
+    Net.get_torch_act_function()
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: get_torch_act_function() missing 1 required positional argument: 'name'
+**********************************************************************
+File "README.md", line 753, in README.md
+Failed example:
+    Net.get_torch_act_function()
+Expected:
+    Traceback (most recent call last):
+    ...
+    TypeError: get_torch_act_function() missing 1 required positional argument: 'name'
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[180]>", line 1, in <module>
+        Net.get_torch_act_function()
+    NameError: name 'Net' is not defined
+Trying:
+    Net.get_torch_act_function(1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: Expected string for a name of activation function
+**********************************************************************
+File "README.md", line 758, in README.md
+Failed example:
+    Net.get_torch_act_function(1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: Expected string for a name of activation function
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[181]>", line 1, in <module>
+        Net.get_torch_act_function(1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net.get_torch_act_function('test')
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: Activation function "test" is not defined
+**********************************************************************
+File "README.md", line 763, in README.md
+Failed example:
+    Net.get_torch_act_function('test')
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: Activation function "test" is not defined
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[182]>", line 1, in <module>
+        Net.get_torch_act_function('test')
+    NameError: name 'Net' is not defined
+Trying:
+    Net.get_torch_act_function('test', 1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: get_torch_act_function() takes 1 positional argument but 2 were given
+**********************************************************************
+File "README.md", line 768, in README.md
+Failed example:
+    Net.get_torch_act_function('test', 1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    TypeError: get_torch_act_function() takes 1 positional argument but 2 were given
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[183]>", line 1, in <module>
+        Net.get_torch_act_function('test', 1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net.get_torch_act_function('tanh')
+Expecting:
+    Tanh()
+**********************************************************************
+File "README.md", line 773, in README.md
+Failed example:
+    Net.get_torch_act_function('tanh')
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[184]>", line 1, in <module>
+        Net.get_torch_act_function('tanh')
+    NameError: name 'Net' is not defined
+Trying:
+    Net.get_torch_act_function('sigmoid')
+Expecting:
+    Sigmoid()
+**********************************************************************
+File "README.md", line 776, in README.md
+Failed example:
+    Net.get_torch_act_function('sigmoid')
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[185]>", line 1, in <module>
+        Net.get_torch_act_function('sigmoid')
+    NameError: name 'Net' is not defined
+Trying:
+    Net()
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 3 required positional arguments: 'hidden_cnt', 'input_count', and 'output_count'
+**********************************************************************
+File "README.md", line 783, in README.md
+Failed example:
+    Net()
+Expected:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 3 required positional arguments: 'hidden_cnt', 'input_count', and 'output_count'
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[186]>", line 1, in <module>
+        Net()
+    NameError: name 'Net' is not defined
+Trying:
+    Net(1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 2 required positional arguments: 'input_count' and 'output_count'
+**********************************************************************
+File "README.md", line 787, in README.md
+Failed example:
+    Net(1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 2 required positional arguments: 'input_count' and 'output_count'
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[187]>", line 1, in <module>
+        Net(1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net(1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 1 required positional argument: 'output_count'
+**********************************************************************
+File "README.md", line 791, in README.md
+Failed example:
+    Net(1,1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() missing 1 required positional argument: 'output_count'
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[188]>", line 1, in <module>
+        Net(1,1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net('hello, world',1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: hidden_cnt must be a natrual number
+**********************************************************************
+File "README.md", line 800, in README.md
+Failed example:
+    Net('hello, world',1,1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: hidden_cnt must be a natrual number
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[189]>", line 1, in <module>
+        Net('hello, world',1,1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net(1,'hello, world',1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: input_count must be a natrual number
+**********************************************************************
+File "README.md", line 804, in README.md
+Failed example:
+    Net(1,'hello, world',1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: input_count must be a natrual number
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[190]>", line 1, in <module>
+        Net(1,'hello, world',1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net(1,1,'hello, world' )
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: output_count must be a natrual number
+**********************************************************************
+File "README.md", line 809, in README.md
+Failed example:
+    Net(1,1,'hello, world' )
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: output_count must be a natrual number
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[191]>", line 1, in <module>
+        Net(1,1,'hello, world' )
+    NameError: name 'Net' is not defined
+Trying:
+    Net(-1,1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: hidden_cnt must be a natrual number
+**********************************************************************
+File "README.md", line 813, in README.md
+Failed example:
+    Net(-1,1,1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: hidden_cnt must be a natrual number
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[192]>", line 1, in <module>
+        Net(-1,1,1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net(1,-1,1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: input_count must be a natrual number
+**********************************************************************
+File "README.md", line 818, in README.md
+Failed example:
+    Net(1,-1,1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: input_count must be a natrual number
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[193]>", line 1, in <module>
+        Net(1,-1,1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net(1,1,-1)
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: output_count must be a natrual number
+**********************************************************************
+File "README.md", line 823, in README.md
+Failed example:
+    Net(1,1,-1)
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: output_count must be a natrual number
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[194]>", line 1, in <module>
+        Net(1,1,-1)
+    NameError: name 'Net' is not defined
+Trying:
+    Net(1,1,1,'test')
+Expecting:
+    Traceback (most recent call last):
+    ...
+    ValueError: Activation function "test" is not defined
+**********************************************************************
+File "README.md", line 827, in README.md
+Failed example:
+    Net(1,1,1,'test')
+Expected:
+    Traceback (most recent call last):
+    ...
+    ValueError: Activation function "test" is not defined
+Got:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[195]>", line 1, in <module>
+        Net(1,1,1,'test')
+    NameError: name 'Net' is not defined
+Trying:
+    from nn_handler import calc
+Expecting nothing
+**********************************************************************
+File "README.md", line 836, in README.md
+Failed example:
+    from nn_handler import calc
+Expected nothing
+Got:
+    Running on the CPU
+Trying:
+    calc.load_module()
+Expecting nothing
+**********************************************************************
+File "README.md", line 842, in README.md
+Failed example:
+    calc.load_module()
+Expected nothing
+Got:
+    {'name': 'Пол', 'type': 'choice', 'separate': False, 'question': 'Ваш пол', 'answers': {'Женский': 0, 'Мужской': 1}}
+    FieldType.choice
+    {'name': 'Возраст', 'type': 'numeric', 'question': 'Возраст в годах', 'mean': 24.299192692276645, 'std': 6.311388612498877}
+    FieldType.numeric
+    {'name': 'Образование', 'type': 'choice', 'separate': True, 'question': 'Уровень образования', 'answers': ['Высшее', 'Незаконченное высшее (3 курс и выше)', 'Полное общее (11 классов)', 'Основное общее (9 классов)', 'Среднее профессиональное']}
+    FieldType.choice
+    {'name': 'Доход', 'type': 'choice', 'separate': False, 'question': 'Уровень дохода в месяц', 'answers': {'Свыше 90 тыс.': 10, '60-90 тыс.': 7.5, '30-60 тыс.': 4.5, '20-30 тыс.': 2.5, 'Менее 20 тыс.': 1}, 'mean': 1.8289775332416323, 'std': 1.7117749849849573}
+    FieldType.choice
+    {'name': 'Семейное положение', 'question': 'Семейное положение', 'type': 'choice', 'separate': True, 'answers': ['Женат/замужем', 'Не женат/не замужем', 'Есть парень/девушка']}
+    FieldType.choice
+    {'name': 'Рост (см)', 'type': 'numeric', 'question': 'Рост (см)', 'mean': 168.7966529115085, 'std': 8.952836726418681}
+    FieldType.numeric
+    {'name': 'Вес (кг)', 'type': 'numeric', 'question': 'Вес (кг)', 'mean': 62.77281063732233, 'std': 14.283112508170126}
+    FieldType.numeric
+    {'name': 'Детство', 'type': 'choice', 'question': 'Подвергались ли вы унижениям и плохому обращению в детстве?', 'answers': {'Да': 1, 'Нет': 0}}
+    FieldType.choice
+    {'name': 'Потеря родителей', 'type': 'choice', 'question': 'Переживали ли вы раннюю утрату родителей?', 'answers': {'Да': 1, 'Нет': 0}}
+    FieldType.choice
+    {'name': 'Родственники', 'type': 'choice', 'question': 'Имеется ли у кого-то из кровных родственников склонность к депрессии? (Кровные родственники — лица, имеющие одного общего предка.)', 'answers': {'Да': 1, 'Нет': 0}}
+    FieldType.choice
+    {'name': 'Творчество', 'type': 'choice', 'question': 'Ваша деятельность связана с творчеством?', 'answers': {'Да': 1, 'Нет': 0}}
+    FieldType.choice
+    {'name': 'Умственный труд', 'type': 'choice', 'question': 'Связан ли род вашей деятельности с умственным трудом?', 'answers': {'Да': 1, 'Нет': 0}}
+    FieldType.choice
+    {'name': 'Близкие', 'type': 'choice', 'question': 'Имеется ли у кого-то из близких вам людей (не включая кровных родственников) склонность к депрессии?', 'answers': {'Да': 1, 'Нет': 0}}
+    FieldType.choice
+    {'name': 'Заболевание', 'type': 'choice', 'question': 'Страдаете ли вы от хронических заболеваний?', 'answers': {'Да': 1, 'Нет': 0}}
+    FieldType.choice
+    {'name': 'Индекс массы тела (BMI)', 'type': 'calc', 'code': 'import numpy as np; df["Индекс массы тела (BMI)"]=df["Вес (кг)"] / np.power(df["Рост (см)"]/100,2)', 'ignore': True, 'mean': 21.943696826448555, 'std': 4.2457137366376}
+    FieldType.calc
+    {'name': 'Идеальная масса (Devine)', 'type': 'calc', 'code': 'import numpy as np; df["Идеальная масса (Devine)"]=45.5 + df["Пол"]*(50-45.5)+0.9*(df["Рост (см)"]-152)', 'mean': 61.745598349381815, 'std': 9.47867826747878}
+    FieldType.calc
+    Net(
+      (act_function): Sigmoid()
+      (input_layer): Linear(in_features=21, out_features=7, bias=True)
+      (output_layer): Linear(in_features=7, out_features=1, bias=True)
+    )
+Trying:
+    assert len(calc.models_state) == 0
+Expecting nothing
+**********************************************************************
+File "README.md", line 843, in README.md
+Failed example:
+    assert len(calc.models_state) == 0
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[198]>", line 1, in <module>
+        assert len(calc.models_state) == 0
+    AssertionError
+Trying:
+    from shutil import copyfile
+    test_path = os.getcwd()+'/models-test/test/'
+    model_path = os.getcwd()+'/models/'
+     import uuid
+     test_uuid = str(uuid.uuid4())
+     os.mkdir(model_path+test_uuid)
+      copyfile(test_path+'model_data.pt',model_path+test_uuid+'/model_data.pt')
+     copyfile(test_path+'model_info.json',model_path+test_uuid+'/model_info.json')
+     calc.load(model_uuid)
+Expecting nothing
+**********************************************************************
+File "README.md", line 844, in README.md
+Failed example:
+    from shutil import copyfile
+    test_path = os.getcwd()+'/models-test/test/'
+    model_path = os.getcwd()+'/models/'
+     import uuid
+     test_uuid = str(uuid.uuid4())
+     os.mkdir(model_path+test_uuid)
+      copyfile(test_path+'model_data.pt',model_path+test_uuid+'/model_data.pt')
+     copyfile(test_path+'model_info.json',model_path+test_uuid+'/model_info.json')
+     calc.load(model_uuid)
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[199]>", line 1
+        from shutil import copyfile
+                                  ^
+    SyntaxError: multiple statements found while compiling a single statement
+Trying:
+    assert len(calc.model_state['models']) == 1
+Expecting nothing
+**********************************************************************
+File "README.md", line 854, in README.md
+Failed example:
+    assert len(calc.model_state['models']) == 1
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[200]>", line 1, in <module>
+        assert len(calc.model_state['models']) == 1
+    AttributeError: module 'nn_handler.calc' has no attribute 'model_state'
+Trying:
+    assert calc.model_state['models'][test_uuid]['name'] == 'test'
+Expecting nothing
+**********************************************************************
+File "README.md", line 855, in README.md
+Failed example:
+    assert calc.model_state['models'][test_uuid]['name'] == 'test'
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[201]>", line 1, in <module>
+        assert calc.model_state['models'][test_uuid]['name'] == 'test'
+    AttributeError: module 'nn_handler.calc' has no attribute 'model_state'
+Trying:
+    assert calc.model_state['models'][test_uuid]['model_data'] == '7c06541fa48e77b5e2a49fd25041619e'
+Expecting nothing
+**********************************************************************
+File "README.md", line 856, in README.md
+Failed example:
+    assert calc.model_state['models'][test_uuid]['model_data'] == '7c06541fa48e77b5e2a49fd25041619e'
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[202]>", line 1, in <module>
+        assert calc.model_state['models'][test_uuid]['model_data'] == '7c06541fa48e77b5e2a49fd25041619e'
+    AttributeError: module 'nn_handler.calc' has no attribute 'model_state'
+Trying:
+    assert calc.model_state['models'][test_uuid]['model_info'] == '4e329bf712f08016c315dd5f3d27099d'
+Expecting nothing
+**********************************************************************
+File "README.md", line 857, in README.md
+Failed example:
+    assert calc.model_state['models'][test_uuid]['model_info'] == '4e329bf712f08016c315dd5f3d27099d'
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[203]>", line 1, in <module>
+        assert calc.model_state['models'][test_uuid]['model_info'] == '4e329bf712f08016c315dd5f3d27099d'
+    AttributeError: module 'nn_handler.calc' has no attribute 'model_state'
+Trying:
+    import os
+     os.rmdir(os.getcwd()+'/models')
+     os.rename(os.getcwd()+'/models-saved', 'models')
+Expecting nothing
+**********************************************************************
+File "README.md", line 866, in README.md
+Failed example:
+    import os
+     os.rmdir(os.getcwd()+'/models')
+     os.rename(os.getcwd()+'/models-saved', 'models')
+Exception raised:
+    Traceback (most recent call last):
+      File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.8_3.8.1008.0_x64__qbz5n2kfra8p0\lib\doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest README.md[204]>", line 1
+        import os
+                ^
+    SyntaxError: multiple statements found while compiling a single statement
+**********************************************************************
+1 items had failures:
+  30 of 205 in README.md
+205 tests in 1 items.
+175 passed and 30 failed.
+***Test Failed*** 30 failures.

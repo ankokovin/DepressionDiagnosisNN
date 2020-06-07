@@ -1,0 +1,1 @@
+docker run --name mycontainer -p 80:80 finals
